@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <div class="wrapper-main-market">
+         <div class="content-wrapper">
+            <form class="forum-input" action="" method="post">
+               {% csrf_token %}
+                {{ form }}
+               <input type="submit" value="Send">
+            </form>
+            {% for p in products%}
+            <div class="content-block">
+               <div class="content-block__img">
+                  фыв
+               </div>
+
+               <div class="content-block__text">
+                  {{p.title }}{{p.price}}
+               </div>
+               <div class="content-block__text-sub">
+                  {{p.content}}
+               </div>
+            </div>
+            {% endfor %}
+         </div>
+      </div>
+{% endblock %}

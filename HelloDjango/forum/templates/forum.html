@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <div class="wrapper-main">
+         <div class="forun-wrapper">
+             {%if request.user.is_authenticated %}
+            <form class="forum-input" action="" method="post">
+               {% csrf_token %}
+                {{ form }}
+               <input type="submit" value="Send">
+            </form>
+             {%else%}
+             <div class="please-reg">Авторизуйтесь что бы писать сообщения</div>
+             {%endif%}
+            <div class="content-forum">
+               {%for item in coments%}
+                <div class="forum-content-block">
+                  <div class="forum-content-block__author">
+                     {{item.user}}
+                  </div>
+                  <div class="forum-content-block__text">
+                     {{item.content}}
+                  </div>
+                  <div class="forum-content-block__datepub">
+                     {{item.time_create}}
+                  </div>
+               </div>
+               {%endfor%}
+            </div>
+         </div>
+
+      </div>
+{% endblock content%}

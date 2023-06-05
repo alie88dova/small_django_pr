@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'css/style.css'%}">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet">
+
+   <title>{{title}}</title>
+</head>
+
+<body>
+<div class="wrapper">
+ {% block header %}
+ <div class="wrapper-header">
+         <header class="wrapper-header-main">
+            <div class="header-logo" onclick="redirect('/')">
+               <div class="header-logo-img">
+                  <img src="{% static 'image/logov2.svg'%}" alt="logo">
+               </div>
+               <div class="header-logo-text">
+                  Supply
+               </div>
+            </div>
+            <div class="header-list">
+
+               <div class="header-list-item-market" onclick="redirect('/market')">Магазин</div>
+               <div class="header-list-item-forum" onclick="redirect('/forum')">Форум</div>
+               <div class="header-list-item-client" onclick="redirect('/userpage')">Клиенты</div>
+               <div class="header-list-item-about" onclick="redirect('/about')">О проекте</div>
+               {%if request.user.is_authenticated %}
+                <div class="header-list-item__authbtn" onclick="redirect('/logout')">{{user.username}}</div>
+                {% else %}
+               <div class="header-list-item__authbtn" onclick="redirect('/login')">Войти</div>
+                {%endif%}
+
+               <!--
+                <div class="header-list-item__authbtn" onclick="redirect('/user.html')">User 1</div>352/9
+               -->
+
+            </div>
+         </header>
+      </div>
+ {% endblock header %}
+ {%block content%}
+ {% endblock %}
+
+ {%block footer%}
+ <div class="wrapper-footer">
+     <div class="footer-text__content" onclick="redirect_from('play-name.com/')">Генератор названий</div>
+     <div class="footer-text__content" onclick="redirect_from('www.logaster.ru')">Слоган</div>
+     <div class="footer-text__content" onclick="redirect_from('logoza.ru/')">Логотипчик</div>
+     <div class="footer-text__content choose-color" onclick="swap_color()"></div>
+ {%endblock footer%}
+    </div>
+      <!-- Yandex.Metrika counter -->
+      <script type="text/javascript">
+         (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+         })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+         ym(92065893, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            ecommerce: "dataLayer"
+         });
+      </script>
+      <noscript>
+         <div><img src="https://mc.yandex.ru/watch/92065893" style="position:absolute; left:-9999px;" alt="" /></div>
+      </noscript>
+      <!-- /Yandex.Metrika counter -->
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1NPR9Y86Y"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag() { dataLayer.push(arguments); }
+         gtag('js', new Date());
+
+         gtag('config', 'G-S1NPR9Y86Y');
+      </script>
+<script src="{%static 'js/script.js'%}"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+      <div class="wrapper-main">
+         <div class="main-text">
+            <div class="main-text__info">
+
+               <h2>Компания "Supply" предлагает оптовым покупателям и розничным продавцам широкий ассортимент товаров
+                  как от
+                  отечественных и зарубежных производителей.</h2>
+               В нашем магазине представлены товары для дома, кухни, дачи, сада и огорода, а также бытовая техника,
+               посуда,
+               текстиль, товары для детей и многое другое.
+               Ассортимент нашего магазина постоянно пополняется.
+               Мы ценим наших клиентов и понимаем, что именно от их мнения зависит выбор и дальнейший интерес к нашим
+               товарам.
+            </div>
+            <div class="buttons">
+               <div class="button1">
+                  <a onclick="redirect('/market')">Наши товары</a>
+               </div>
+               <div class="button2">
+                  <a onclick="redirect('/forum')">Наш форум</a>
+               </div>
+               {%if request.user.is_authenticated %}
+               {% else %}
+                  <div class="button2">
+                  <a onclick="redirect('/register')">Регистрация</a>
+                  </div>
+               {%endif%}
+            </div>
+
+         </div>
+         <div class="main-image">
+            <img id="main-image" src="/static/img/polka.png">
+         </div>
+
+      </div>
+{% endblock %}

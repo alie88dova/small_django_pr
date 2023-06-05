@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ {%for users in users_list%}
+<div class="user-content">{{users.user}}</div>
+{% endfor%}
+{% endblock %}
